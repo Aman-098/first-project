@@ -3,20 +3,34 @@
         <div class="border rounded p-4 w-50 bg-light">
     
             <h3 class="text-center mt-2">Login!</h3>
+            <app-alert></app-alert>
     
-            <form action="" id="login" method="post" accept-charset="utf-8">
+            <form action="" [formGroup]="loginForm">
     
                 <div class="mb-3">
                     <label for="">Email:</label>
-                    <input type="email" name="email" id="email" class="form-control" placeholder="Enter your Email">
+                    <input type="email" name="email" formControlName="email" class="form-control" placeholder="Enter your Email">
                 </div>
-    
+                <div class="text-danger">
+                    @if (loginForm.controls['email'].touched && loginForm.controls['email'].errors?.['required']) {
+                        <span>{{validatonMessage.required}}</span>
+                    }@else if (loginForm.controls['email'].touched && loginForm.controls['email'].errors?.['email']) {
+                        <span>{{validatonMessage.email}}</span>
+                    }
+                </div>
     
                 <div class="mb-3">
                     <label for="">Password:</label>
-                    <input type="password" name="password" id="password" class="form-control"
+                    <input type="password" name="password" formControlName="password" class="form-control"
                         placeholder="Enter your Password">
-    
+
+                </div>
+                <div class="text-danger">
+                    @if (loginForm.controls['password'].touched && loginForm.controls['password'].errors?.['required']) {
+                        <span>{{validatonMessage.required}}</span>
+                    }@else if (loginForm.controls['password'].touched && loginForm.controls['password'].errors?.['minlength']) {
+                        <span>{{validatonMessage.minlength(6)}}</span>
+                    }
                 </div>
     
     
@@ -24,7 +38,7 @@
                     <span>Not registered yet! <a href="#" routerLink="/register" class="text-decoration-none">Regsiter</a></span>
                 </div>
     
-                <button class="mt-1 btn btn-success w-100">Login</button>
+                <button class="mt-1 btn w-100" style="background-color: orange; color: white;" (click)="onLogin()" [disabled]="loginForm.invalid">Login</button>
     
             </form>
         </div>
