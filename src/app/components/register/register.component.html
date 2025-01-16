@@ -3,6 +3,8 @@
         <div class="border rounded p-4 w-50 bg-light">
     
             <h3 class="text-center mt-2">Registration!</h3>
+
+            <app-alert *ngIf="alert" [message]="message" [alertType]="alertType"></app-alert>
     
             <form action=""[formGroup]="registrationForm">
                 <div class="mb-3 ">

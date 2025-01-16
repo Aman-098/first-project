@@ -4,10 +4,11 @@ import { Router, RouterLink } from '@angular/router';
 import { Login } from '../../model/class/Login';
 import { ValidationMessage } from '../../constant/validation-messages';
 import { AlertComponent } from '../../reusablecomponent/alert/alert.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
-  imports: [RouterLink,ReactiveFormsModule,AlertComponent],
+  imports: [RouterLink,ReactiveFormsModule,AlertComponent,CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -24,6 +25,11 @@ export class LoginComponent {
 
   validatonMessage=ValidationMessage
 
+  //message and alertype for alert
+  message:string='';
+  alertType:string='';
+  alert:boolean=false;
+
   onLogin(){
 
     const data= JSON.parse(localStorage.getItem('register') || '{}');
@@ -31,17 +37,42 @@ export class LoginComponent {
       this.formValue=this.loginForm.value
       if(data.email && this.formValue?.email === data.email){
         if(this.formValue?.password===data.password){
-          console.log("logged in ")
+
+          this.showAlert("Logged in Successfull! Redirecting","success",3000);
+
+          setTimeout(() => {
+            this.router.navigateByUrl('home')
+          }, 1000);
+          
         }else{
-          console.log("incorrect password")
+          
+          this.showAlert("Incorrect Password","danger",3000);
         }
       }else{
-        console.log("user not found")
+        
+        this.showAlert("User not Found","danger",3000);
       }
     }else{
       console.log("form is invalid ");
     }
 
+  }
+
+
+  // function to show alert
+
+  showAlert(message:string,type:string,duration:number){
+    this.message=message;
+    this.alertType=type;
+    this.alert=true;
+    this.alertClose(duration)
+  }
+
+  alertClose(time:number) {
+    setTimeout(() => {
+      this.alert=false;
+    }, time);
+    
   }
 
 
