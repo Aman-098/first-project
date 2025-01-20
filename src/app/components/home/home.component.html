@@ -1,1 +1,124 @@
-<p>home works!</p>
+
+<div class="card">
+    <div class="card-header bg-success text-light">
+        <h3 class="">Add New Employee</h3>
+    </div>
+    <div class="card-body ">
+        <div class="container">
+            <app-toast *ngIf="alert" [message]="message" [type]="type"></app-toast>
+        </div>
+    
+
+        <form action="" [formGroup]="employeeForm" class="pt-4">
+            <div class="row">
+                <div class="col-4">
+                    <p-floatlabel variant="on">
+                        <input pInputText id="on_label"  autocomplete="off" formControlName="name" class="form-control" />
+                        <label for="on_label">Name:</label>
+                    </p-floatlabel>
+                    <!-- validation message -->
+                    <div class="text-danger" *ngIf="employeeForm.controls['name'].invalid && (employeeForm.controls['name'].touched || employeeForm.controls['name'].dirty )">
+                        <span *ngIf="employeeForm.controls['name'].errors?.['required']">{{validationMessage.required}}
+                        </span>
+                        <span *ngIf="employeeForm.controls['name'].errors?.['minlength']">{{validationMessage.minlength(4)}}
+                        </span>
+                    </div>
+                    <!-- validation message ends -->
+                    
+                </div>
+                <div class="col-4">
+                    <p-floatlabel variant="on">
+                        <input pInputText id="on_label" autocomplete="off" formControlName="emailId" class="form-control" />
+                        <label for="on_label">Email Id:</label>
+                    </p-floatlabel>
+                    <!-- validation message -->
+                    <div class="text-danger" *ngIf="employeeForm.controls['emailId'].invalid && (employeeForm.controls['emailId'].touched || employeeForm.controls['emailId'].dirty )">
+                        <span *ngIf="employeeForm.controls['emailId'].errors?.['required']">{{validationMessage.required}}
+                        </span>
+                        <span *ngIf="employeeForm.controls['emailId'].errors?.['email']">{{validationMessage.email}}
+                        </span>
+                    </div>
+                    <!-- validation message ends -->
+                </div>
+                <div class="col-4">
+                    <p-floatlabel variant="on">
+                        <input pInputText id="on_label" autocomplete="off" formControlName="contactNo" class="form-control" />
+                        <label for="on_label">Contact No:</label>
+                    </p-floatlabel>
+                    <!-- validation message -->
+                    <div class="text-danger" *ngIf="employeeForm.controls['contactNo'].invalid && (employeeForm.controls['contactNo'].touched || employeeForm.controls['contactNo'].dirty )">
+                        <span *ngIf="employeeForm.controls['contactNo'].errors?.['required']">{{validationMessage.required}}
+                        </span>
+                        <span *ngIf="employeeForm.controls['contactNo'].errors?.['minlength']">{{validationMessage.minlength(10)}}
+                        </span>
+                    </div>
+                    <!-- validation message ends -->
+                </div>
+                <div class="col-4 mt-3">
+                    <p-floatlabel variant="on">
+                        <input pInputText id="on_label" autocomplete="off" formControlName="city" class="form-control" />
+                        <label for="on_label">City:</label>
+                    </p-floatlabel>
+                    <!-- validation message -->
+                    <div class="text-danger" *ngIf="employeeForm.controls['city'].invalid && (employeeForm.controls['city'].touched || employeeForm.controls['city'].dirty )">
+                        <span *ngIf="employeeForm.controls['city'].errors?.['required']">{{validationMessage.required}}
+                        </span>
+                        
+                    </div>
+                    <!-- validation message ends -->
+                </div>
+
+                <div class="col-4 mt-3">
+                    <p-floatlabel variant="on">
+                        <input pInputText id="on_label" autocomplete="off" formControlName="pincode" class="form-control" />
+                        <label for="on_label">Pincode:</label>
+                    </p-floatlabel>
+                    <!-- validation message -->
+                    <div class="text-danger" *ngIf="employeeForm.controls['pincode'].invalid && (employeeForm.controls['pincode'].touched || employeeForm.controls['pincode'].dirty )">
+                        <span *ngIf="employeeForm.controls['pincode'].errors?.['required']">{{validationMessage.required}}
+                        </span>
+                        
+                    </div>
+                    <!-- validation message ends -->
+                </div>
+                <div class="col-4 mt-3">
+                    <p-floatlabel variant="on">
+                        <input pInputText id="on_label" autocomplete="off" formControlName="state" class="form-control" />
+                        <label for="on_label">State:</label>
+                    </p-floatlabel>
+                    <!-- validation message -->
+                    <div class="text-danger" *ngIf="employeeForm.controls['state'].invalid && (employeeForm.controls['state'].touched || employeeForm.controls['state'].dirty )">
+                        <span *ngIf="employeeForm.controls['state'].errors?.['required']">{{validationMessage.required}}
+                        </span>
+                        
+                    </div>
+                    <!-- validation message ends -->
+                </div>
+        
+                <div class="col-12 mt-3">
+                    <p-floatlabel variant="on">
+                        <textarea pTextarea id="over_label" formControlName="address" rows="5" cols="142" style="resize: none" class="h-full"></textarea>
+                        <label for="on_label">Address:</label>
+                    </p-floatlabel>
+                     <!-- validation message -->
+                     <div class="text-danger" *ngIf="employeeForm.controls['address'].invalid && (employeeForm.controls['address'].touched || employeeForm.controls['address'].dirty )">
+                        <span *ngIf="employeeForm.controls['address'].errors?.['required']">{{validationMessage.required}}
+                        </span>
+                        
+                    </div>
+                    <!-- validation message ends -->
+                </div>
+            </div>
+
+        </form>
+        
+        <div class="row mt-3">
+            <div class="col-12 text-center">
+                <p-button label="Reset"  (click)="onReset()" severity="secondary" class="mx-3" />
+                <p-button label="Submit" (click)="onSubmit()" [disabled]="employeeForm.invalid" severity="success"/>
+                
+            </div>
+        </div>
+        
+    </div>
+</div>

@@ -4,6 +4,8 @@ import { LoginComponent } from './components/login/login.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { HomeComponent } from './components/home/home.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { EmpListComponent } from './components/emp-list/emp-list.component';
+
 
 
 export const routes: Routes = [
@@ -25,14 +27,18 @@ export const routes: Routes = [
         component:ForgetPasswordComponent
     },
     {
-        path:'',
+        path:'dashboard',
         component:LayoutComponent,
         children:[
             {
                 path:'home',
                 component:HomeComponent
+            },
+            {
+                path:'emp-list',
+                component:EmpListComponent
             }
-
+            
         ]
-    }
+    },
 ];

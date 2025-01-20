@@ -1,0 +1,114 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header text-light bg-success">
+                <h3>Employee List</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="container">
+                        <app-toast *ngIf="alert" [message]="message" [type]="type"></app-toast>
+                    </div>
+                    <div class="col-12">
+                        <table class="table table-bordered">
+                            
+
+                            <thead>
+                                <tr class="text-center">
+                                    <th>Sno.</th>
+                                    <th>Name</th>
+                                    <th>Contact No</th>
+                                    <th>Email Id</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (item of employeeList; track $index) {
+                                <tr class="text-center">
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{{ item.name }}</td>
+                                    <td>{{ item.contactNo }}</td>
+                                    <td>{{ item.emailId }}</td>
+                                    <td>
+                                        <p-button (click)="onEdit(item)" label="Update" severity="info" />
+                                        <!-- <p-button (click)="onEdit(item)" label="Delete" severity="danger" class="mx-2" /> -->
+                                        <!-- <p-button (click)="onDelete($event)" label="Delete" severity="danger" [outlined]="true" /> -->
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Dialog box for edit -->
+            <div class="card flex justify-center">
+                <p-dialog header="Edit Employee Detail" [modal]="true" [(visible)]="visible" [style]="{ width: '40%' }"
+                    [closable]="false" [dismissableMask]="true">
+                    <p class="text-gray-600 mb-3">
+                        Update your profile information below.
+                    </p>
+
+                    <form action="" [formGroup]="employeeForm">
+                        <!-- Username Field -->
+                        <div class="field mb-2">
+                            <label for="name">Name:</label>
+                            <input type="text" formControlName="name" class="form-control"  />
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="field mb-2">
+                            <label for="email">Email Id:</label>
+                            <input type="email" formControlName="emailId"  class="form-control"  />
+                        </div>
+
+                        <!-- Contact No -->
+                        <div class="field mb-2">
+                            <label for="contact">Contact:</label>
+                            <input type="text" formControlName="contactNo"  class="form-control"  />
+                        </div>
+
+                        <!-- City -->
+                        <div class="field mb-2">
+                            <label for="city">City:</label>
+                            <input type="text" formControlName="city"  class="form-control"  />
+                        </div>
+
+                        <!-- Pincode -->
+                        <div class="field mb-2">
+                            <label for="Pincode">Pincode:</label>
+                            <input type="text" formControlName="pincode"  class="form-control"  />
+                        </div>
+
+                        <!-- State -->
+                        <div class="field mb-2">
+                            <label for="state">State:</label>
+                            <input type="text" formControlName="state"  class="form-control"  />
+                        </div>
+
+                        <!-- Address -->
+
+                        <div class="field mb-2">
+                            <label for="state">Address:</label>
+                            <textarea name="" id="" formControlName="address"  class="form-control"></textarea>
+                        </div>
+                    </form>
+
+                    <!-- Action Buttons -->
+                    <div class="flex justify-end gap-3 mt-2">
+                        <p-button label="Cancel" severity="danger" (click)="visible = false"></p-button>
+                        <p-button label="Update" severity="success" class="mx-2" (click)="onSave(); visible = false"></p-button>
+                    </div>
+                </p-dialog>
+            </div>
+            <!-- dialog box end -->
+
+            <!-- confirm dialog for delete -->
+            <!-- <div class="card flex justify-center gap-2">
+                <p-confirmdialog />
+                
+            </div> -->
+            <!-- confirm dialog end -->
+        </div>
+    </div>
+</div>

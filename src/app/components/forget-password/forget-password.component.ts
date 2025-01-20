@@ -41,7 +41,7 @@ export class ForgetPasswordComponent {
 
   onVerifyEmail() {
     const data = JSON.parse(localStorage.getItem('register') || '{}'); 
-    console.log(data);
+    
     if (this.passwordForm.get('email')?.valid) {
       this.formValue = this.passwordForm.value;
 

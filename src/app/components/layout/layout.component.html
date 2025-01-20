@@ -1,28 +1,89 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+
+<!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#" routerLink="home">Logo</a>
-    
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="#" routerLink="/dashboard/home">Dashboard</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#" routerLink="home">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">profile</a>
+          <a class="nav-link active" aria-current="page" href="#"></a>
         </li>
       </ul>
-      <form class="d-flex">
-        
-        <button class="btn btn-primary" type="submit" (click)="onLogout()">Logout</button>
-      </form>
+      <h6 class="text-light mx-4 mt-2">Hello, {{name}}</h6>
+      <div class="d-flex justify-end">
+          <button class='btn btn-danger'>
+              <a href="#" class='text-decoration-none text-light' routerLink="/login">Logout</a>
+          </button> 
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+<!-- Prime Ng toolbar start -->
+
+<p-toolbar [style]="{'background-color':'black','color':'white'}">
+  <div class="p-toolbar-group-left">
+    <h4 class="title">Dashboard</h4>
+  </div>
+  <div class="p-toolbar-group-right d-flex align-items-center gap-3">
+    <h6 class="mt-2">Hello, {{name}}</h6>
+    <button pButton type="button" label="Logout" icon="pi pi-sign-out" class="p-button-danger" (click)="onLogout()"></button>
+  </div>
+</p-toolbar>
+
+<!-- Prime Ng toolbar end -->
+
+<!-- <div class="row">
+  <div class="col-4">
+    <div class="card flex justify-center" [style]="{'width':'250px','height':'100vh','position':'sticky'}">
+      <p-menu [model]="items" />
     </div>
   </div>
-</nav>
+  <div class="col-8">
+    <router-outlet></router-outlet>
+  </div>
+</div> -->
 
-<router-outlet></router-outlet>
+<div class="row">
+  <div class="col-2">
+    <div class="card flex justify-center sticky-menu">
+      <p-menu [model]="items"></p-menu>
+    </div>
+  </div>
+  <div class="col-10">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+
+
+
+<!-- <div class="container-fluid">
+  <div class="row"> -->
+    <!-- Sticky Left Menu -->
+    <!-- <nav class="col-md-3 col-lg-2 sticky-menu">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="emp-list">Employee List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="home">Add Employee</a>
+        </li>
+
+      </ul>
+    </nav> -->
+
+
+    <!-- <main class="col-md-9 col-lg-10">
+      <router-outlet></router-outlet>
+    </main>
+
+  </div>
+</div> -->
+
+

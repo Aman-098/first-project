@@ -41,7 +41,7 @@ export class LoginComponent {
           this.showAlert("Logged in Successfull! Redirecting","success",3000);
 
           setTimeout(() => {
-            this.router.navigateByUrl('home')
+            this.router.navigateByUrl('dashboard/home')
           }, 1000);
           
         }else{
